@@ -6,3 +6,18 @@ h1{
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: gray;
 }
+button{
+    background-color: aqua;
+    width: 44px;
+    height: 44px;
+    border: 1px solid black;
+}
+#contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+#contenedor>div{
+    margin-bottom: 2%;
+}
