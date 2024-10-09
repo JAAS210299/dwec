@@ -4,7 +4,7 @@
 // Debes de hacer uso del método splice tanto para el borrado como para insertar.
 
 //Declaración de variables
-function ej1() {
+function ej1(){
   let array1 = [0, 7, 2, 3, 4, 2, 6, 2, 8, 2];
   for (let i = array1.length - 1; i >= 0; i--) {
     if (array1[i] === 2) {
@@ -17,10 +17,10 @@ function ej1() {
 
   console.log(array1); // [0, 7, 1, 1, 3, 4, 1, 1, 6, 1, 1, 8, 1, 1]
 
-  document.getElementById("btn-ej1").addEventListener("click", ej1);
+  
 
 }
-
+document.getElementById("btn-ej1").addEventListener("click", ej1);
 
 // Ejercicio 2
 // Crear un vector de 10 elementos con valores “aleatorios” comprendidos entre 0 y 1000. Buscar el menor y luego generar otro vector a partir de dicha posición hasta el final.  Para manipular el vector debes de hacer uso de la función “slice”. También debes de buscar por internet como generar números random en javascript comprendidos en un rango determinado.
@@ -54,21 +54,26 @@ function ej2() {
   textEj2.textContent =
     `Números aleatorios: del 0 al 1000: ${array2} Números mayores al menor: ${array3}`;
   
-    document.getElementById("btn-ej2").addEventListener("click", ej2);
+   
   
 }
-
+document.getElementById("btn-ej2").addEventListener("click", ej2);
 
 // Ejercicio 3
 // Escribe una función capaz de fusionar 2 arrays y que elimine todos los elementos duplicados.
 // Datos de ejemplo:
-/*
-let array1 = [1, 2, 3];
-let array2 = [2, 30, 1];
-const array = Array.from(new Set(array1.concat(array2)));
+function ej3(){
+  let array1 = [1, 2, 3];
+  let array2 = [2, 30, 1];
+  const array = Array.from(new Set(array1.concat(array2)));
 
-console.log(array);
-*/
+  let texto = document.getElementById('h1-ej3');
+
+  texto.textContent = array;
+
+ 
+}
+document.getElementById('btn-ej3').addEventListener('click', ej3);
 // console.log(  fusionarArrays( array1 ,  array2));
 
 // Salida:      [3, 2, 30, 1]
@@ -118,9 +123,9 @@ function ej3() {
 
   nDNI = parseInt(nDNI);
   text.textContent = "Su letra de DNI es: " + letras[nDNI % 23];
-  document.getElementById("btn-ej3").addEventListener("click", ej3);
-}
 
+}
+document.getElementById("btn-ej3").addEventListener("click", ej3);
 
 
 // Ejercicio 5
@@ -178,13 +183,47 @@ document.getElementById("btn-ej6").addEventListener("click", ej6);
 // 2º. Seguidamente definirá un bucle, y en cada pase del bucle se pregunta al usuario a qué clase pertenece el animal, escogido de forma aleatoria.
 // 3º. Debe haber un contador de preguntas contestadas, otro de preguntas correctas y otro de preguntas incorrectas.
 // 4º. También debe implementar alguna condición/mecanismo de salida del bucle.
-function ej7(){
-  let text = document.getElementById('h1-ej7');
+function ej7() {
+  let listAnimales = ['león', 'tigre', 'elefante', 'jirafa',         // mamíferos
+                      'águila', 'colibrí', 'pingüino', 'loro',       // pájaros
+                      'rana', 'salamandra', 'tritón', 'sapillo',     // anfibios
+                      'serpiente', 'cocodrilo', 'camaleón', 'iguana', // reptiles
+                      'tiburón', 'salmón', 'pez payaso', 'atún'];    // peces
 
+  let listEspecies = ['mamíferos', 'mamíferos', 'mamíferos', 'mamíferos',  // mamíferos
+                      'pájaros', 'pájaros', 'pájaros', 'pájaros',         // pájaros
+                      'anfibios', 'anfibios', 'anfibios', 'anfibios',     // anfibios
+                      'reptiles', 'reptiles', 'reptiles', 'reptiles',     // reptiles
+                      'peces', 'peces', 'peces', 'peces'];               // peces
 
+  let totalPreguntas = 0;
+  let correctas = 0;
+  let incorrectas = 0;
 
-  text.textContent = "  assad";
-  console.log(text);
-  
+  while (true) {
+      let n = Math.floor(Math.random() * listAnimales.length); // Escoge un animal aleatorio
+      let respuesta = prompt(`¿A qué especie pertenece el ${listAnimales[n]}? (mamíferos, pájaros, anfibios, reptiles, peces)`);
+
+      if (respuesta === null || respuesta === '') {
+          break; // Salida del juego si se cancela la pregunta o se deja vacía
+      }
+     
+
+      totalPreguntas++;
+
+      if (respuesta.toLowerCase() === listEspecies[n]) {
+          alert("¡Correcto!");
+          correctas++;
+      } else {
+          alert(`Incorrecto. El ${listAnimales[n]} pertenece a la clase ${listEspecies[n]}.`);
+          incorrectas++;
+      }
+
+      // Actualizamos los contadores en la página
+      document.getElementById("contadorPreguntas").textContent = `Preguntas contestadas: ${totalPreguntas}`;
+      document.getElementById("contadorCorrectas").textContent = `Preguntas correctas: ${correctas}`;
+      document.getElementById("contadorIncorrectas").textContent = `Preguntas incorrectas: ${incorrectas}`;
+  }
 }
+
 document.getElementById("btn-ej7").addEventListener("click", ej7);

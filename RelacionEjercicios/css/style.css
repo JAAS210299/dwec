@@ -19,6 +19,10 @@ button{
     
 }
 
+p{
+    color: darkblue;
+}
+
 #contenedor>div{
     margin-bottom: 2%;
 }
