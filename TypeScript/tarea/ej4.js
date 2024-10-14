@@ -1,5 +1,5 @@
-var getAvenger = function (nombre, poder, arma) {
-    if (arma === void 0) { arma = "arco"; }
+"use strict";
+const getAvenger = function (nombre, poder, arma = "arco") {
     if (arma === "") {
         arma = "arco";
     }
