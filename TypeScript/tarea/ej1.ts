@@ -5,6 +5,6 @@ let personaje:string[] = ["Karate", "Aikido", "Wing Chun", "Jiu-Jitsu"];
 
 console.log(`Nombre: ${nombre} edad: ${edad} personaje: ${personaje}`);
 
-let text = document.getElementById("h1-ej1");
+let textNode = document.getElementById("h1-ej1") as HTMLElement;
 
-text.textContent = `Nombre: ${nombre} edad: ${edad} personaje: ${personaje}`;
+textNode.textContent = `Nombre: ${nombre} edad: ${edad} personaje: ${personaje}`;

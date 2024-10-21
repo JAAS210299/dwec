@@ -1,10 +1,10 @@
 body{
-    background-color:darkcyan;
+    background-color: darkcyan;
     color: whitesmoke;
 }
 h1{
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color: gray;
+    color: blue;
 }
 button{
     background-color: aqua;
