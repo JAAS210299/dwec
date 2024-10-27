@@ -1,5 +1,7 @@
 "use strict";
 class Rectangulo {
+    base;
+    altura;
     constructor(base, altura) {
         this.base = base;
         this.altura = altura;

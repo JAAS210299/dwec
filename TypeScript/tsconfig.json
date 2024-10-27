@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES6",                      // O "ESNext"
+    "target": "ES2023",                      // O "ESNext"
     "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
