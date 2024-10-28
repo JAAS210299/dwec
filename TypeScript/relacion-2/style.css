@@ -6,11 +6,13 @@ h1{
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: blue;
 }
-button{
+p{
     background-color: aqua;
-    width: 44px;
-    height: 44px;
+    width: 70px;
+    height: 40px;
     border: 1px solid black;
+    color: darkblue;
+    
 }
 #contenedor{
     display: flex;
@@ -19,9 +21,6 @@ button{
     
 }
 
-p{
-    color: darkblue;
-}
 
 #contenedor>div{
     margin-bottom: 2%;
