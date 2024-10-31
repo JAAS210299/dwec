@@ -90,7 +90,7 @@ document.getElementById('btn-ej3').addEventListener('click', ej3);
 // 3. Si el número es válido, se calcula la letra que le corresponde según el método explicado anteriormente.
 // 4. Una vez calculada la letra, se debe comparar con la letra indicada por el usuario. Si no coinciden, se muestra un mensaje al usuario diciéndole que la letra que ha indicado no es correcta. En otro caso, se muestra un mensaje indicando que el número y la letra de DNI son correctos.
 // El array de letras es:
-function ej3() {
+function ej4() {
   let letras = [
     "T",
     "R",
@@ -119,13 +119,13 @@ function ej3() {
   ];
 
   let nDNI = prompt("Ingresa el número de tu DNI");
-  let text = document.getElementById("h1-ej3");
+  let text = document.getElementById("h1-ej4");
 
   nDNI = parseInt(nDNI);
   text.textContent = "Su letra de DNI es: " + letras[nDNI % 23];
 
 }
-document.getElementById("btn-ej3").addEventListener("click", ej3);
+document.getElementById("btn-ej4").addEventListener("click", ej4);
 
 
 // Ejercicio 5
