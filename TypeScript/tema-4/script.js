@@ -12,7 +12,7 @@ const multiplicarNumeros = () => {
         if (typeof item.width === 'number') {
             item.width * 2;
         }
-        return menu;
+        return item;
     });
     const menuU = JSON.stringify(propiedades);
     alert(menuU);
