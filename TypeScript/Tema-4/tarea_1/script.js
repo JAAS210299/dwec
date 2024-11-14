@@ -1,4 +1,3 @@
-"use strict";
 // // Ejercicio 1
 // // Crea una función multiplicarNumeros ( object ) que multiplique todas las variables “numéricas” de un objeto por 2. Por ejemplo para la instancia de objeto siguiente:
 // // // antes de la llamada
@@ -76,8 +75,10 @@ const totalYears = () => {
 };
 // 4.3 Ahora vamos a tratar de obtener el piloto con más experiencia. (Esta hay que darle un par de vueltas).
 const masExperiencia = () => {
-    let mayorTiempo = Math.max(...pilotos.map(piloto => piloto.years));
-    alert(mayorTiempo);
+    let pilotoConMasExperiencia = pilotos.reduce((acumulador, piloto) => {
+        return (acumulador.years > piloto.years) ? acumulador : piloto;
+    });
+    alert(JSON.stringify(pilotoConMasExperiencia));
 };
 // Ejercicio 5
 // Dado la siguiente estructura de datos sobre pilotos con id, nombre y su división (faction):

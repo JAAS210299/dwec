@@ -1,10 +1,11 @@
 class Entrenador extends Personal{
+    private idFederacion:number;
     constructor(
         id:number,
         nombre:string,
         apellidos:string, 
         edad: number, 
-        private idFederacion:number
+        idFederacion:number
         ) 
         {
         super(id, nombre, apellidos, edad);
@@ -15,5 +16,14 @@ class Entrenador extends Personal{
     }
     public dirigirEntrenamiento():void{
 
+    }
+
+
+    public get IdFederacion(): number {
+        return this.idFederacion;
+    }
+
+    public set IdFederacion(nuevoDorsal: number) {
+        this.idFederacion = nuevoDorsal;
     }
 }

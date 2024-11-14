@@ -1,15 +1,14 @@
-"use strict";
 // Ejercicio 1
 // Escribe un script el cual contenga una función que sea capaz de calcular los años que tiene una persona. A la función debe de pasarse la fecha de nacimiento de la persona y devolverá cuántos años tiene.
-function ej1_r1() {
+function ej1() {
     let fechaPersonaString = prompt("Dime la fecha de la persona (AÑO/MES/DÍA) y te diré su edad");
     const h1Ej1 = document.getElementById("h1-ej1");
     const fechaActual = new Date();
-    while (fechaPersonaString === null) {
-        fechaPersonaString = prompt("Su fecha no puede ser nula");
-    }
     if (fechaPersonaString) {
         const fechaPersona = new Date(fechaPersonaString);
+        if (fechaPersonaString === "") {
+            h1Ej1.textContent = "No se puede dejar vacía la fecha";
+        }
         if (fechaPersona.getFullYear() <= fechaActual.getFullYear()) {
             let edad = fechaActual.getFullYear() - fechaPersona.getFullYear();
             // Ajuste si la fecha actual es antes del cumpleaños de este año
@@ -28,10 +27,10 @@ function ej1_r1() {
     }
 }
 // Agregar el evento al botón
-document.getElementById("btn-ej1")?.addEventListener("click", ej1_r1);
+document.getElementById("btn-ej1")?.addEventListener("click", ej1);
 // Ejercicio 2
 // Realiza un script que sea capaz de calcular los días que hay entre dos fechas. Siempre el número de días debe de ser positivo, ya que el usuario debe de introducir 2 fechas, da igual cual sea anterior a la otra, para que calcule la diferencia de días de ambas.
-function ej2_r1() {
+function ej2() {
     let fechaIni = prompt("Dime la fecha inicial (AAAA-MM-DD)");
     let fechaFin;
     if (fechaIni === null) {
@@ -78,12 +77,12 @@ function ej2_r1() {
     const dias = Math.ceil(diferenciaEnMilisegundos / (1000 * 60 * 60 * 24));
     alert(`La diferencia entre ambas fechas es de ${dias} día(s).`);
 }
-document.getElementById("btn-ej2")?.addEventListener("click", ej2_r1);
+document.getElementById("btn-ej2")?.addEventListener("click", ej2);
 // Ejercicio 3
 // Crea un programa que muestre la hora en diferentes formatos, según el valor que meta el usuario por parámetro: los parámetros que debe introducir el usuario son la hora, los minutos, los segundos.
 // 14:35:07 (hora detallada con minutos y segundos).
 // 14:35:07 PM o 02:35:07 AM (hora con minutos y AM o PM según sea antes o después del medio día).
-function ej3_r1() {
+function ej3() {
     // Expresión regular tipada con el tipo RegExp en TypeScript
     const regex = /^(0[1-9]|1[0-2]):([0-5]\d):([0-5]\d) ?([APap][Mm])$/;
     // Pedir al usuario que ingrese una hora en formato HH:MM:SS
@@ -96,7 +95,7 @@ function ej3_r1() {
         alert("Formato incorrecto. Debes usar HH:MM:SS en formato 24 horas.");
     }
 }
-document.getElementById("btn-ej3")?.addEventListener("click", ej3_r1);
+document.getElementById("btn-ej3")?.addEventListener("click", ej3);
 // Crea un programa que pida al usuario que elija una opción del siguiente menú:
 // Potencia.
 // Raíz.
@@ -106,7 +105,7 @@ document.getElementById("btn-ej3")?.addEventListener("click", ej3_r1);
 // Si el usuario introduce 2, se le pedirá un número (no negativo) y se mostrará el resultado en pantalla (La raíz de X es: )
 // Si el usuario introduce 3, se le pedirá un decimal por pantalla y se mostrará el redondeo al entero más próximo, al alta y a la baja.
 // Si el usuario introduce 4, se le pedirá un ángulo (entre 0 y 360) y se le mostrarán por pantalla los valores trigonométricos del seno, coseno y tangente.
-function ej4_r1() {
+function ej4() {
     const menu = prompt("Dime que quieres calcular:\n1. Potencia\n2. Raíz\n3. Redondeo\n4. Trigonometría");
     switch (menu) {
         case '1':
@@ -185,8 +184,8 @@ function calcularTrigonometria() {
         }
     }
 }
-document.getElementById("btn-ej4")?.addEventListener("click", ej4_r1);
-function ej5_r1() {
+document.getElementById("btn-ej4")?.addEventListener("click", ej4);
+function ej5() {
     const radioString = prompt("Introduce el valor del radio (en cm):");
     if (radioString !== null) {
         const radio = parseFloat(radioString);
@@ -210,8 +209,8 @@ function ej5_r1() {
     }
 }
 // Iniciar el programa
-document.getElementById("btn-ej5")?.addEventListener("click", ej5_r1);
-function ej6_r1() {
+document.getElementById("btn-ej5")?.addEventListener("click", ej5);
+function ej6() {
     const nombreCompleto = prompt("Dime tu nombre completo:");
     if (nombreCompleto) {
         // Dividir el nombre completo en partes
@@ -241,8 +240,8 @@ function ej6_r1() {
     }
 }
 // Iniciar el programa
-document.getElementById("btn-ej6")?.addEventListener("click", ej6_r1);
-function ej7_r1() {
+document.getElementById("btn-ej6")?.addEventListener("click", ej6);
+function ej7() {
     // Array para almacenar los tiempos individuales
     let tiemposIndividuales = [];
     // Tiempo de inicio para el cálculo total
@@ -280,7 +279,7 @@ function ej7_r1() {
     // Muestra el mensaje en un alert
     alert(mensaje);
 }
-document.getElementById("btn-ej7")?.addEventListener("click", ej7_r1);
+document.getElementById("btn-ej7")?.addEventListener("click", ej7);
 // Ejercicio 8
 // Haciendo uso de expresiones regulares, cómo podrías obtener del siguiente texto “Test 123123329” sólo el número. Es decir, poder acceder al valor del número de este texto. Además, debe de seleccionar el método más apropiado que de alguna forma devuelva o almacene el número buscado.
 function ej8() {

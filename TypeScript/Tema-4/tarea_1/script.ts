@@ -91,9 +91,13 @@ const totalYears = ():void =>{
 }
 // 4.3 Ahora vamos a tratar de obtener el piloto con más experiencia. (Esta hay que darle un par de vueltas).
 const masExperiencia = ():void => {
-  let mayorTiempo: number | number [] = Math.max(...pilotos.map(piloto => piloto.years));
-  alert(mayorTiempo);
+  let pilotoConMasExperiencia:object = pilotos.reduce((acumulador, piloto) => {
+    return (acumulador.years > piloto.years) ? acumulador : piloto;
+  });
+
+  alert(JSON.stringify(pilotoConMasExperiencia));
 }
+
 // Ejercicio 5
 // Dado la siguiente estructura de datos sobre pilotos con id, nombre y su división (faction):
  const pilots = [

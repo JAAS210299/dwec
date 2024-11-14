@@ -1,20 +1,22 @@
 // Ejercicio 1
 // Escribe un script el cual contenga una función que sea capaz de calcular los años que tiene una persona. A la función debe de pasarse la fecha de nacimiento de la persona y devolverá cuántos años tiene.
-function ej1_r1() {
+function ej1() {
   let fechaPersonaString: string | null = prompt(
     "Dime la fecha de la persona (AÑO/MES/DÍA) y te diré su edad"
   );
-  
+
   const h1Ej1: HTMLElement = document.getElementById("h1-ej1") as HTMLElement;
   const fechaActual: Date = new Date();
 
-  while (fechaPersonaString === "") {
-    fechaPersonaString = prompt("Su fecha no puede ser nula");
-  }
+
 
   if (fechaPersonaString) {
     const fechaPersona: Date = new Date(fechaPersonaString);
-
+    
+    if (fechaPersonaString === "") {
+      h1Ej1.textContent = "No se puede dejar vacía la fecha";
+    }
+    
     if (fechaPersona.getFullYear() <= fechaActual.getFullYear()) {
       let edad = fechaActual.getFullYear() - fechaPersona.getFullYear();
 
@@ -25,23 +27,28 @@ function ej1_r1() {
       ) {
         edad--;
       }
+     
 
       h1Ej1.textContent = `Tiene/s ${edad} año(s)`;
     } else {
       h1Ej1.textContent = "La fecha es en el futuro o no es válida";
     }
-  } else {
-    h1Ej1.textContent = "No es válida tu fecha";
+  }
+ 
+
+  else {
+
+      h1Ej1.textContent = "No es válida tu fecha";
   }
 }
 
 
 // Agregar el evento al botón
-document.getElementById("btn-ej1")?.addEventListener("click", ej1_r1);
+document.getElementById("btn-ej1")?.addEventListener("click", ej1);
 
 // Ejercicio 2
 // Realiza un script que sea capaz de calcular los días que hay entre dos fechas. Siempre el número de días debe de ser positivo, ya que el usuario debe de introducir 2 fechas, da igual cual sea anterior a la otra, para que calcule la diferencia de días de ambas.
-function ej2_r1() {
+function ej2() {
   let fechaIni: string | null = prompt("Dime la fecha inicial (AAAA-MM-DD)");
   let fechaFin: string | null;
 
@@ -101,14 +108,14 @@ function ej2_r1() {
   alert(`La diferencia entre ambas fechas es de ${dias} día(s).`);
 }
 
-document.getElementById("btn-ej2")?.addEventListener("click", ej2_r1);
+document.getElementById("btn-ej2")?.addEventListener("click", ej2);
 
 
 // Ejercicio 3
 // Crea un programa que muestre la hora en diferentes formatos, según el valor que meta el usuario por parámetro: los parámetros que debe introducir el usuario son la hora, los minutos, los segundos.
 // 14:35:07 (hora detallada con minutos y segundos).
 // 14:35:07 PM o 02:35:07 AM (hora con minutos y AM o PM según sea antes o después del medio día).
-function ej3_r1() {
+function ej3() {
   // Expresión regular tipada con el tipo RegExp en TypeScript
   const regex: RegExp = /^(0[1-9]|1[0-2]):([0-5]\d):([0-5]\d) ?([APap][Mm])$/;
 
@@ -122,7 +129,7 @@ function ej3_r1() {
     alert("Formato incorrecto. Debes usar HH:MM:SS en formato 24 horas.");
   }
 }
-document.getElementById("btn-ej3")?.addEventListener("click", ej3_r1);
+document.getElementById("btn-ej3")?.addEventListener("click", ej3);
 
 // Crea un programa que pida al usuario que elija una opción del siguiente menú:
 // Potencia.
@@ -133,7 +140,7 @@ document.getElementById("btn-ej3")?.addEventListener("click", ej3_r1);
 // Si el usuario introduce 2, se le pedirá un número (no negativo) y se mostrará el resultado en pantalla (La raíz de X es: )
 // Si el usuario introduce 3, se le pedirá un decimal por pantalla y se mostrará el redondeo al entero más próximo, al alta y a la baja.
 // Si el usuario introduce 4, se le pedirá un ángulo (entre 0 y 360) y se le mostrarán por pantalla los valores trigonométricos del seno, coseno y tangente.
-function ej4_r1() {
+function ej4() {
   const menu: string | null = prompt(
     "Dime que quieres calcular:\n1. Potencia\n2. Raíz\n3. Redondeo\n4. Trigonometría"
   );
@@ -164,11 +171,11 @@ function ej4_r1() {
 function calcularPotencia() {
   const baseString: string | null = prompt('Dime la base:');
   const exponenteString: string | null = prompt('Dime el exponente:');
-  
+
   if (baseString !== null && exponenteString !== null) {
     const base = parseFloat(baseString);
     const exponente = parseFloat(exponenteString);
-    
+
     if (!isNaN(base) && !isNaN(exponente)) {
       const resultado = Math.pow(base, exponente);
       alert(`La potencia de ${base} elevado a ${exponente} es: ${resultado}`);
@@ -180,10 +187,10 @@ function calcularPotencia() {
 
 function calcularRaiz() {
   const numeroString: string | null = prompt("Introduce un número no negativo:");
-  
+
   if (numeroString !== null) {
     const numero = parseFloat(numeroString);
-    
+
     if (numero < 0) {
       alert("Por favor, introduce un número no negativo.");
     } else {
@@ -195,10 +202,10 @@ function calcularRaiz() {
 
 function redondearNumero() {
   const decimalString: string | null = prompt("Introduce un número decimal:");
-  
+
   if (decimalString !== null) {
     const numero = parseFloat(decimalString);
-    
+
     if (!isNaN(numero)) {
       const redondeadoAlAlto = Math.ceil(numero);
       const redondeadoAlBajo = Math.floor(numero);
@@ -212,10 +219,10 @@ function redondearNumero() {
 
 function calcularTrigonometria() {
   const anguloString: string | null = prompt("Introduce un ángulo entre 0 y 360 grados:");
-  
+
   if (anguloString !== null) {
     const angulo = parseFloat(anguloString);
-    
+
     if (angulo < 0 || angulo > 360) {
       alert("Por favor, introduce un ángulo entre 0 y 360 grados.");
     } else {
@@ -228,15 +235,15 @@ function calcularTrigonometria() {
   }
 }
 
-document.getElementById("btn-ej4")?.addEventListener("click", ej4_r1);
+document.getElementById("btn-ej4")?.addEventListener("click", ej4);
 
 
-function ej5_r1() {
+function ej5() {
   const radioString: string | null = prompt("Introduce el valor del radio (en cm):");
-  
+
   if (radioString !== null) {
     const radio = parseFloat(radioString);
-    
+
     if (!isNaN(radio) && radio > 0) {
       const diametro = 2 * radio;
       const perimetro = 2 * Math.PI * radio;
@@ -245,12 +252,12 @@ function ej5_r1() {
       const volumenEsfera = (4 / 3) * Math.PI * Math.pow(radio, 3);
 
       alert(`Resultados:\n` +
-            `Valor del radio: ${radio} cm\n` +
-            `Valor del diámetro: ${diametro} cm\n` +
-            `Valor del perímetro de la circunferencia: ${perimetro.toFixed(2)} cm\n` +
-            `Valor del área del círculo: ${areaCirculo.toFixed(2)} cm²\n` +
-            `Valor del área de la esfera: ${areaEsfera.toFixed(2)} cm²\n` +
-            `Valor del volumen de la esfera: ${volumenEsfera.toFixed(2)} cm³`);
+        `Valor del radio: ${radio} cm\n` +
+        `Valor del diámetro: ${diametro} cm\n` +
+        `Valor del perímetro de la circunferencia: ${perimetro.toFixed(2)} cm\n` +
+        `Valor del área del círculo: ${areaCirculo.toFixed(2)} cm²\n` +
+        `Valor del área de la esfera: ${areaEsfera.toFixed(2)} cm²\n` +
+        `Valor del volumen de la esfera: ${volumenEsfera.toFixed(2)} cm³`);
     } else {
       alert("Por favor, introduce un valor de radio válido (número positivo).");
     }
@@ -258,10 +265,10 @@ function ej5_r1() {
 }
 
 // Iniciar el programa
-document.getElementById("btn-ej5")?.addEventListener("click", ej5_r1);
+document.getElementById("btn-ej5")?.addEventListener("click", ej5);
 
 
-function ej6_r1() {
+function ej6() {
   const nombreCompleto: string | null = prompt("Dime tu nombre completo:");
 
   if (nombreCompleto) {
@@ -280,13 +287,13 @@ function ej6_r1() {
 
     // Crear el mensaje a mostrar
     const mensaje: string = `Tamaño del nombre más apellidos (sin contar espacios): ${sinEspacios.length}\n` +
-                            `En minúsculas: ${nombreCompleto.toLowerCase()}\n` +
-                            `En mayúsculas: ${nombreCompleto.toUpperCase()}\n` +
-                            `Nombre: ${nombre}\n` +
-                            `Apellido 1: ${apellido1}\n` +
-                            `Apellido 2: ${apellido2}\n` +
-                            `Propuesta de usuario 1: ${usuario1}\n` +
-                            `Propuesta de usuario 2: ${usuario2}`;
+      `En minúsculas: ${nombreCompleto.toLowerCase()}\n` +
+      `En mayúsculas: ${nombreCompleto.toUpperCase()}\n` +
+      `Nombre: ${nombre}\n` +
+      `Apellido 1: ${apellido1}\n` +
+      `Apellido 2: ${apellido2}\n` +
+      `Propuesta de usuario 1: ${usuario1}\n` +
+      `Propuesta de usuario 2: ${usuario2}`;
 
     // Mostrar el mensaje en un alert
     alert(mensaje);
@@ -296,10 +303,10 @@ function ej6_r1() {
 }
 
 // Iniciar el programa
-document.getElementById("btn-ej6")?.addEventListener("click", ej6_r1);
+document.getElementById("btn-ej6")?.addEventListener("click", ej6);
 
 
-function ej7_r1() {
+function ej7() {
   // Array para almacenar los tiempos individuales
   let tiemposIndividuales: number[] = [];
 
@@ -310,27 +317,27 @@ function ej7_r1() {
   let pi = "3.";
   let k = 1;
   let a = 1n, b = 0n, c = 0n, d = 1n;
-  
+
   for (let i = 0; i < 60; i++) {
-      // Tiempo de inicio de cada iteración
-      const inicioIteracion = performance.now();
-      
-      // Algoritmo de cálculo de decimales de PI (repetido para ampliar el tiempo de cálculo)
-      for (let j = 0; j < 1000; j++) {  // Repetimos el cálculo 1000 veces
-          while (4n * a + b - c < d) {
-              b = 10n * (b - a * d);
-              a *= 10n;
-              k++;
-              c = (2n * b + a) / d;
-              d *= BigInt(k); // Convierte `k` a BigInt antes de multiplicar
-          }
+    // Tiempo de inicio de cada iteración
+    const inicioIteracion = performance.now();
+
+    // Algoritmo de cálculo de decimales de PI (repetido para ampliar el tiempo de cálculo)
+    for (let j = 0; j < 1000; j++) {  // Repetimos el cálculo 1000 veces
+      while (4n * a + b - c < d) {
+        b = 10n * (b - a * d);
+        a *= 10n;
+        k++;
+        c = (2n * b + a) / d;
+        d *= BigInt(k); // Convierte `k` a BigInt antes de multiplicar
       }
+    }
 
-      pi += c.toString();
+    pi += c.toString();
 
-      // Tiempo de finalización de cada iteración
-      const finIteracion = performance.now();
-      tiemposIndividuales.push(finIteracion - inicioIteracion); // Guarda el tiempo individual
+    // Tiempo de finalización de cada iteración
+    const finIteracion = performance.now();
+    tiemposIndividuales.push(finIteracion - inicioIteracion); // Guarda el tiempo individual
   }
 
   // Tiempo de finalización para el cálculo total
@@ -340,13 +347,13 @@ function ej7_r1() {
   let mensaje = "Tiempo total para calcular 60 decimales de PI: " + (finTotal - inicioTotal).toFixed(2) + " ms\n\n";
   mensaje += "Tiempos individuales para cada decimal:\n";
   tiemposIndividuales.forEach((tiempo, index) => {
-      mensaje += "Decimal " + (index + 1) + ": " + tiempo.toFixed(2) + " ms\n";
+    mensaje += "Decimal " + (index + 1) + ": " + tiempo.toFixed(2) + " ms\n";
   });
 
   // Muestra el mensaje en un alert
   alert(mensaje);
 }
-document.getElementById("btn-ej7")?.addEventListener("click", ej7_r1);
+document.getElementById("btn-ej7")?.addEventListener("click", ej7);
 
 
 
@@ -387,8 +394,8 @@ document.getElementById("btn-ej9")?.addEventListener("click", ej9);
 // → Enlace: http://w3.unpocodetodo.info/utiles/regex-ejemplos.php?type=cc
 function ej10() {
 
-    const h1Ej10: HTMLElement = document.getElementById("h1-ej10") as HTMLElement;
-    h1Ej10.textContent = "Expresiones regulares para validar tarjetas de crédito:\n\n" +
+  const h1Ej10: HTMLElement = document.getElementById("h1-ej10") as HTMLElement;
+  h1Ej10.textContent = "Expresiones regulares para validar tarjetas de crédito:\n\n" +
     "^3(?:0[0-5]|[68][0-9])[0-9]{11}$: Tarjetas JCB que comienzan con 30, 31, 32, 33, 34, 35 o 36 y tienen un total de 16 dígitos.\n" +
     "^6(?:011|5[0-9]{2})[0-9]{12}$: Tarjetas Discover que comienzan con 6011 o 5 seguido de 2 dígitos del 0 al 9 y tienen un total de 16 dígitos.\n" +
     "5[1-5][0-9]{14}$: Tarjetas MasterCard que comienzan con un número entre 51 y 55 y tienen un total de 16 dígitos.\n" +
