@@ -5,7 +5,7 @@ function ej1_r1() {
     let fechaPersonaString = prompt("Dime la fecha de la persona (AÑO/MES/DÍA) y te diré su edad");
     const h1Ej1 = document.getElementById("h1-ej1");
     const fechaActual = new Date();
-    while (fechaPersonaString === null) {
+    while (fechaPersonaString === "") {
         fechaPersonaString = prompt("Su fecha no puede ser nula");
     }
     if (fechaPersonaString) {

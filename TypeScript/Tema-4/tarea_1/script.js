@@ -1,3 +1,4 @@
+"use strict";
 // // Ejercicio 1
 // // Crea una función multiplicarNumeros ( object ) que multiplique todas las variables “numéricas” de un objeto por 2. Por ejemplo para la instancia de objeto siguiente:
 // // // antes de la llamada

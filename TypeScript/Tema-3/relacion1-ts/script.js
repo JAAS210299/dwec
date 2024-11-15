@@ -1,3 +1,4 @@
+"use strict";
 // Ejercicio 1
 // Escribe un script el cual contenga una función que sea capaz de calcular los años que tiene una persona. A la función debe de pasarse la fecha de nacimiento de la persona y devolverá cuántos años tiene.
 function ej1() {
