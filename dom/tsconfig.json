@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "./JavaScript", // Carpeta donde se guardarán los archivos transpilados
+    "target": "ES6",          // Versión de JavaScript objetivo
+    "module": "commonjs"      // Módulo compatible con Node.js
+  },
+  "include": ["TypeScript/**/*.ts"], // Incluir todos los archivos .ts en la carpeta TypeScript
+  "exclude": ["JavaScript"]          // Excluir la carpeta de salida para evitar conflictos
+}
