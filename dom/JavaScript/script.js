@@ -1,11 +1,21 @@
 const divNorte = document.querySelector("div#norte");
+const divSur = document.querySelector("div#sur");
+const texto = document.querySelector('div#texto');
 const ej1 = (e) => {
-    // Verificar si el target es el elemento <h2>
-    if (e.target.tagName === "H2" && e.target.textContent === "Galicia") {
-        alert(e.target.textContent); // Muestra el texto del <h2>
+    let region = "";
+    let hijos = [];
+    // Verifica si el clic fue en el div o en alguno de sus hijos
+    if (divNorte.contains(e.target)) {
+        region = 'norte';
+        hijos = [...divNorte.querySelectorAll('li')].map(hijo => hijo.textContent);
+        texto.innerHTML = `Has elegido ${divNorte.querySelector('h2').textContent} que está situado en el ${region}<br>
+                           El número de provincias es ${divNorte.childNode.childElementCount}: ${hijos.join(', ')}`;
     }
-    else if (e.target.tagName === "H2" && e.target.textContent === "Canarias") {
-        alert(e.target.textContent);
+    else if (divSur.contains(e.target)) {
+        region = 'sur';
+        hijos = [...divSur.querySelectorAll('li')].map(hijo => hijo.textContent);
+        texto.innerHTML = `Has elegido ${divSur.querySelector('h2').textContent} que está situado en el ${region}<br>
+                           El número de provincias es ${divSur.childElementCount}: ${hijos.join(', ')}`;
     }
 };
 document.body.addEventListener('click', ej1);
