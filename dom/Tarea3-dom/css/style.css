@@ -1,0 +1,23 @@
+body{
+    background-color:aquamarine;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#table{
+    border: 1px solid white;
+    border-spacing: 15px;
+    border-collapse: separate;
+}
+
+#table>th{
+    color:aliceblue;
+    text-transform:uppercase;
+    
+}
+th{
+    margin: 100px 100px  100px 100px;
+}
