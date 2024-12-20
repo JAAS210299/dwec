@@ -9,3 +9,7 @@ const llamandoAPI = async () => {
 };
 
 llamandoAPI();
+
+
+// CAMBIO DE MONEDA CON MONTO INCLUIDO
+// https://v6.exchangerate-api.com/v6/3c2fe95af7bec6d9be69ca76/pair/EUR/GBP/AMOUNT
