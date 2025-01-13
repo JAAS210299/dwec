@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prueba de API</title>
+</head>
+<body>
+  <h1>Prueba de API Local y Externa</h1>
+  <button onclick="llamandoAPI()">Llamar a API Local</button>
+  <button onclick="cambioDeMoneda('EUR', 'USD', 100)">Conversión de Moneda</button>
+
+  <script>
+    // Función para llamar al servidor local
+    const llamandoAPI = async () => {
+      try {
+        const respuesta = await fetch("http://127.0.0.1:3001/perras");
+        const datos = await respuesta.json();
+        console.log(datos);
+      } catch (error) {
+        console.error("Error al llamar a la API local:", error);
+      }
+    };
+
+    // CAMBIO DE MONEDA CON MONTO INCLUIDO
+    const cambioDeMoneda = async (monedaOrigen, monedaDestino, monto) => {
+      try {
+        const apiKey = "3c2fe95af7bec6d9be69ca76"; // Idealmente, reemplaza esto con process.env.API_KEY en un entorno Node.js
+        const url = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${monedaOrigen}/${monedaDestino}/${monto}`;
+
+        const respuesta = await fetch(url);
+        const datos = await respuesta.json();
+        console.log(datos);
+      } catch (error) {
+        console.error("Error al llamar a la API externa:", error);
+      }
+    };
+  </script>
+</body>
+</html>

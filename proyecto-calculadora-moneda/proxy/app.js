@@ -1,28 +1,45 @@
-const express = require('express');
-const cors = require('cors');
+// Importar dependencias
+require("dotenv").config();
+const express = require("express");
+const axios = require("axios");
+
 const app = express();
+const port = process.env.PORT || 3001;
 
-// Configuración de CORS
-const corsOptions = {
-  origin: 'http://127.0.0.1:5501', // Reemplaza con el dominio permitido
-  optionsSuccessStatus: 200, // Algunos navegadores antiguos requieren este código de estado
-};
+// Habilitar CORS para permitir solicitudes desde el cliente
+const cors = require("cors");
+app.use(cors());
 
-// Habilitar CORS para todas las rutas
-app.use(cors(corsOptions));
+// Rutas para la API
+app.get("/rate", async (req, res) => {
+  const { from, to } = req.query;
 
-// Ruta de ejemplo
-app.get('/', (req, res) => {
-  res.json({ msg: 'Esta ruta está habilitada para CORS.' });
+  // Verificar que se recibieron los parámetros de moneda
+  if (!from || !to) {
+    return res.status(400).json({ error: "Faltan parámetros de moneda" });
+  }
+
+  try {
+    // Llamada a la API externa de tasa de cambio utilizando Axios
+    const response = await axios.get(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/${from}`);
+    
+    if (response.data.result === "success") {
+      const rate = response.data.conversion_rates[to];
+      if (rate) {
+        res.json({ rate });
+      } else {
+        res.status(404).json({ error: "Tasa de cambio no encontrada" });
+      }
+    } else {
+      res.status(500).json({ error: "Error al obtener datos de la API" });
+    }
+  } catch (error) {
+    console.error("Error al llamar a la API externa:", error);
+    res.status(500).json({ error: "Error al conectar con el servicio de tasas" });
+  }
 });
 
-app.get('/perras', (req, res) => {
-    res.json({ msg: 'Esta ruta está PErrrrrrrraaasss para CORS.' });
-  });
-  
-
 // Iniciar el servidor
-const port = 3000;
 app.listen(port, () => {
-  console.log(`Servidor escuchando en http://127.0.0.1:${port}`);
+  console.log(`Servidor escuchando en http://localhost:${port}`);
 });
