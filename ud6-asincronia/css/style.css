@@ -1,25 +1,17 @@
-.container{
+body{
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #0b6691;
+
 }
-.main{
-    width: 80%;
-    height: 80%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0);
+p, h1{
+    color: white;
+
 }
-.footer{
-    width: 100%;
-    height: 10%;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
+p:hover, h1:hover{
+    color: gold;
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Prueba de Delay con Promesas</title>
+    <script>
+        function delay(ms) {
+            return new Promise((resolve) => {
+                setTimeout(resolve, ms);
+            });
+        }
+
+        function ejecutarDelay() {
+            delay(3000).then(() => alert('Se ejecutó después de 3 segundos'));
+        }
+    </script>
+</head>
+<body>
+    <h1>Prueba de Delay</h1>
+    <button onclick="ejecutarDelay()">Ejecutar Delay</button>
+</body>
+</html>
