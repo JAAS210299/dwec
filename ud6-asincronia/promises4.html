@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios con Promise.all y Promise.race</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script>
+        // Función para simular un delay con una promesa
+        function delay(ms, value) {
+            return new Promise((resolve) => {
+                setTimeout(() => resolve(value), ms);
+            });
+        }
+
+        // Ejercicio 1: Uso de Promise.all
+        function ejecutarPromiseAll() {
+            const tarea1 = delay(2000, "Tarea 1 completada");
+            const tarea2 = delay(3000, "Tarea 2 completada");
+            const tarea3 = delay(1000, "Tarea 3 completada");
+
+            Promise.all([tarea1, tarea2, tarea3])
+                .then((resultados) => {
+                    console.log("Ejercicio 1: Todas las tareas completadas");
+                    console.log(resultados);
+                })
+                .catch((error) => {
+                    console.error("Ocurrió un error en Promise.all:", error);
+                });
+        }
+
+        // Ejercicio 2: Uso de Promise.race
+        function ejecutarPromiseRace() {
+            const tareaLenta = delay(5000, "Tarea lenta completada");
+            const tareaRapida = delay(2000, "Tarea rápida completada");
+            const tareaExtraRapida = delay(1000, "Tarea extra rápida completada");
+
+            Promise.race([tareaLenta, tareaRapida, tareaExtraRapida])
+                .then((resultado) => {
+                    console.log("Ejercicio 2: La primera tarea completada es:", resultado);
+                })
+                .catch((error) => {
+                    console.error("Ocurrió un error en Promise.race:", error);
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Ejercicios con Promise.all y Promise.race</h1>
+    <button onclick="ejecutarPromiseAll()">Ejecutar Promise.all</button>
+    <button onclick="ejecutarPromiseRace()">Ejecutar Promise.race</button>
+    <p>Abre la consola del navegador para ver los resultados.</p>
+</body>
+</html>

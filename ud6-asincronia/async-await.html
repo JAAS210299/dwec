@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Prueba de async/await con fetch</title>
+    <script>
+        // Función para cargar JSON usando async/await
+        async function loadJson(url) {
+            try {
+                const response = await fetch(url);
+                if (response.status === 200) {
+                    return await response.json();
+                } else {
+                    throw new Error(`Error ${response.status}: No se pudo cargar el recurso`);
+                }
+            } catch (error) {
+                throw error; // Propagamos el error
+            }
+        }
+
+        // Llamada a la función y manejo del error
+        async function probarCarga() {
+            try {
+                const data = await loadJson('data.json'); // Cambiar a la ruta correcta si es necesario
+                document.getElementById("resultado").innerText = data.message; // Muestra solo el mensaje
+            } catch (error) {
+                alert(error.message); // Muestra el mensaje de error
+                document.getElementById("resultado").innerText = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Prueba de async/await con fetch</h1>
+    <button onclick="probarCarga()">Cargar JSON</button>
+    <p id="resultado">Haz clic en el botón para cargar el mensaje del JSON...</p>
+</body>
+</html>

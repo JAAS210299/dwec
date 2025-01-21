@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Callback</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script>
+        function useCallback(callback) {
+            callback(1);
+            callback(2);
+            callback(3);
+        }
+
+        function callback(sentence) {
+            console.log(sentence);
+        }
+
+        // Llamada a la función useCallback con el callback
+        window.onload = function () {
+            useCallback(callback);
+        };
+    </script>
+</head>
+<body>
+    <h1>Prueba de Callback</h1>
+    <p>Abre la consola del navegador para ver la salida.</p>
+</body>
+</html>
