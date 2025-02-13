@@ -7,30 +7,32 @@ let foto = "";
 //CALLBACKS
 
 // Función que obtiene un usuario aleatorio desde la API
-// function obtenerUsuario(callback) {
-//     fetch('https://randomuser.me/api/')
-//       .then(response => response.json())  // Parseamos la respuesta como JSON
-//       .then(data => {
-//         const usuario = data.results[0];  // Extraemos el primer usuario del array "results"
-//         callback(usuario);  // Pasamos el usuario al callback
-//       })
-//       .catch(error => {
-//         console.log('Error al obtener usuario:', error);
-//       });
-//   }
+function obtenerUsuario(callback) {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const usuario = data.results[0];
+        callback(usuario);
+      })
+      .catch(error => {
+        console.log('Error al obtener usuario:', error);
+      });
+}
 
 /// Llamamos a obtenerUsuario y le pasamos la función mostrarDatos como callback
 //obtenerUsuario(mostrarDatos);
 
 // Función callback que maneja la información del usuario
 function mostrarDatos(usuario) {
-    nombre = `${usuario.name.first} ${usuario.name.last}`;  // Nombre completo
-    nacionalidad = usuario.nat;  // Nacionalidad
-    foto = usuario.picture.large;  // Foto del usuario
+  const nombre = `${usuario.name.first} ${usuario.name.last}`;
+  const nacionalidad = usuario.nat;
+  const foto = usuario.picture.large;
 
-    console.log('Nombre:', nombre);
-    console.log('Nacionalidad:', nacionalidad);
-    console.log('Foto:', foto);
+  console.log('Nombre:', nombre);
+  console.log('Nacionalidad:', nacionalidad);
+  console.log('Foto:', foto);
+
+  randomUserDOM(nombre, nacionalidad, foto); // Pasar los datos correctamente
 }
 //      PROMISES
 // function obtenerUsuario() {
@@ -55,27 +57,27 @@ function mostrarDatos(usuario) {
 //     });
 
 //      ASYNC/AWAIT
-async function obtenerUsuario() {
-    try {
-        // Realizamos la solicitud para obtener el usuario aleatorio
-        const response = await fetch(url);
-        const data = await response.json();  // Parseamos la respuesta como JSON
-        const usuario = data.results[0];  // Extraemos el primer usuario del array "results"
+// async function obtenerUsuario() {
+//     try {
+//         // Realizamos la solicitud para obtener el usuario aleatorio
+//         const response = await fetch(url);
+//         const data = await response.json();  // Parseamos la respuesta como JSON
+//         const usuario = data.results[0];  // Extraemos el primer usuario del array "results"
 
-        // Extraemos la información del usuario
-        const nombre = `${usuario.name.first} ${usuario.name.last}`;  // Nombre completo
-        const nacionalidad = usuario.nat;  // Nacionalidad
-        const foto = usuario.picture.large;  // Foto del usuario
+//         // Extraemos la información del usuario
+//         nombre = `${usuario.name.first} ${usuario.name.last}`;  // Nombre completo
+//         nacionalidad = usuario.nat;  // Nacionalidad
+//         foto = usuario.picture.large;  // Foto del usuario
 
-        // Mostramos la información en la consola
-        console.log('Nombre:', nombre);
-        console.log('Nacionalidad:', nacionalidad);
-        console.log('Foto:', foto);
-      } catch (error) {
-        console.log('Error al obtener usuario:', error);  // Si ocurre un error, lo mostramos
-      }
+//         // Mostramos la información en la consola
+//         console.log('Nombre:', nombre);
+//         console.log('Nacionalidad:', nacionalidad);
+//         console.log('Foto:', foto);
+//       } catch (error) {
+//         console.log('Error al obtener usuario:', error);  // Si ocurre un error, lo mostramos
+//       }
 
-  }
+//   }
 
 // obtenerUsuario();  // Llamamos a la función principal
 
@@ -105,14 +107,15 @@ async function obtenerUsuario() {
 // getDataAsync();
 
 
+ 
 
 function randomUserDOM(nombre, nacionalidad, foto) {
-    const nombreDOM = document.getElementById("nombre");
-    const nacionalidadDOM = document.getElementById("nacionalidad");
-    const fotoDOM = document.getElementById("foto");
-
-    nombreDOM.textContent = nombre;
-    nacionalidadDOM.textContent = nacionalidad;
-    fotoDOM.src = foto;
+  document.getElementById("nombre").textContent =  'Nombre: ' + nombre;
+  document.getElementById("nacionalidad").textContent = 'Nacionalidad: ' + nacionalidad;
+  document.getElementById("foto").src = foto;
 }
-obtenerUsuario();
+
+obtenerUsuario(mostrarDatos);
+
+
+// getelementsibling y child siempre con element
