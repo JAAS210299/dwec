@@ -110,10 +110,12 @@ function mostrarDatos(usuario) {
  
 
 function randomUserDOM(nombre, nacionalidad, foto) {
+
+ 
   document.getElementById("nombre").textContent =  'Nombre: ' + nombre;
   document.getElementById("nacionalidad").textContent = 'Nacionalidad: ' + nacionalidad;
   document.getElementById("foto").src = foto;
-}
+} setTimeout(randomUserDOM, 2000);
 
 obtenerUsuario(mostrarDatos);
 
